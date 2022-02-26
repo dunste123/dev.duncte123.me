@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <script src="/bricks/components/buttonAndEvents.js" defer></script>
+        <script src="/bricks/components/brickList.js" defer></script>
+        <script src="/bricks/app.js" defer></script>
+
+        <style>
+            .brick-list {
+                margin-top: 20px;
+
+                width: 475px;
+                height: 480px;
+                background: cornflowerblue;
+                padding: 10px;
+                display: inline-flex;
+                flex-flow: column wrap;
+                overflow: hidden;
+                flex: 1;
+                align-content: flex-start;
+            }
+
+            .brick {
+                --brick-color: firebrick;
+
+                width: 50px;
+                height: 50px;
+                background: var(--brick-color);
+                margin: 5px;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <app-button-and-events id="button"></app-button-and-events>
+        <hr>
+        <app-brick-list id="brick-list"></app-brick-list>
+    </body>
+</html>
