@@ -1,0 +1,4 @@
+[29-Jul-2018 17:28:49 UTC] PHP Parse error:  syntax error, unexpected '*' in /home/duncte123/domains/dev.duncte123.me/calculator--/index.php(12) : eval()'d code on line 1
+[16-Oct-2018 18:26:03 UTC] PHP Parse error:  syntax error, unexpected '(' in /home/duncte123/domains/dev.duncte123.me/calculator--/index.php(12) : eval()'d code on line 1
+[16-Oct-2018 18:27:30 UTC] PHP Parse error:  syntax error, unexpected '*' in /home/duncte123/domains/dev.duncte123.me/calculator--/index.php(12) : eval()'d code on line 1
+[07-Nov-2018 10:25:19 UTC] PHP Parse error:  syntax error, unexpected '8' (T_LNUMBER) in /home/duncte123/domains/dev.duncte123.me/calculator--/index.php(12) : eval()'d code on line 1

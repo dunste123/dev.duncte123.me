@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Particles</title>
+  </head>
+  <body>
+
+  <script>
+    window.onload = function(){
+      var ctx = document.createElement("canvas").getContext("2d"),
+          canvas = ctx.canvas,
+          particles = {},
+          particleIndex = 0,
+          particleNum = 10;
+          canvas.width = 800;
+          canvas.height = 500;
+      var cW = canvas.width,
+          cH = canvas.height;
+
+      document.body.appendChild(canvas);
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, cW, cH);
+
+
+      function Particle(){
+        this.x = cW/2;
+        this.y = cH/2;
+        this.vx = Math.random() * 10 - 5;
+        this.vy = Math.random() * 10 - 5;
+        this.gravity = 0.3;
+        particleIndex++;
+        particles[particleIndex] = this;
+        this.id = particleIndex;
+        this.life = 0;
+        this.maxLife = Math.random() * 30 + 50;
+        this.color = "hsla(" + parseInt(Math.random()*360, 10) + ", 100%, 50%, 1)";
+      }
+      Particle.prototype.draw = function () {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        /*if(Math.random() < 0.1){
+          this.vx = Math.random() * 10 - 5;
+          this.vy = Math.random() * 10 - 5;
+        }*/
+        this.vy += this.gravity;
+        this.life++;
+        if(this.life >= this.maxLife){
+          delete particles[this.id];
+        }
+
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, 10, 10);
+      };
+
+      setInterval(function(){
+        ctx.globalCompositeOperation = "source-over";
+        ctx.fillStyle = "rgba(0, 0, 0, 1)";
+        ctx.fillRect(0, 0, cW, cH);
+
+        for(var i=0; i<particleNum; i++){
+          new Particle();
+        }
+        ctx.globalCompositeOperation = "lighter";
+        for(var i in particles){
+          particles[i].draw();
+        }
+      }, 30);
+
+    };
+  </script>
+  </body>
+</html>

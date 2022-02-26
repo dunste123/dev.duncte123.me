@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A Clock On a Canvas</title>
+    <style>
+      body {
+        background: #000000;
+      }
+      .container {
+        position: relative;
+        top: 25%;
+        transform: translateY(50%);
+        display: block;
+        text-align: center;
+        margin: auto;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="container">
+      <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+    <script src="clock.js"></script>
+    <script>
+    var clock = new clock("canvas");
+    clock.start();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body{ background:#CCC; }
+      #canvas{ background:#FFF; border:#999 1px solid; cursor: pointer; }
+    </style>
+    <script>
+      var img = new Image();
+      img.src = "picture.jpg";
+
+      var coords = [
+        {"id": "vleugel_oog", "width": 40, "height": 40, "xLeft": 271, "yLeft": 242, "xRight": 742, "yRight": 242},
+        {"id": "spriet_gezicht", "width": 40, "height": 40, "xLeft": 159, "yLeft": 200, "xRight": 628, "yRight": 200},
+        {"id": "blad_bloem", "width": 40, "height": 70, "xLeft": 59, "yLeft": 167, "xRight": 526, "yRight": 170},
+        {"id": "voelspriet", "width": 40, "height": 80, "xLeft": 178, "yLeft": 131, "xRight": 644, "yRight": 128},
+        {"id": "poot", "width": 40, "height": 60, "xLeft": 149, "yLeft": 284, "xRight": 605, "yRight": 290},
+      ];
+
+      function _(id){ return document.getElementById(id); }
+
+      function initCanvas(){
+        var ctx = _('canvas').getContext('2d');
+        ctx.drawImage(img, 0, 0, ctx.canvas.width, ctx.canvas.height);
+
+        ctx.canvas.addEventListener('mousedown', function(event){
+          var mX = event.clientX - ctx.canvas.offsetLeft,
+              mY = event.clientY - ctx.canvas.offsetTop;
+
+              for(var i=0; i<coords.length; i++){
+                var c = coords[i];
+                if( (mX >= (c.xLeft - (c.width/2)) && mX < (c.xLeft - (c.width/2))+c.width && mY >= (c.yLeft - (c.height/2)) && mY < (c.yLeft - (c.height/2))+c.height) ||
+                  (mX >= (c.xRight - (c.width/2)) && mX < (c.xRight - (c.width/2))+c.width && mY >= (c.yRight - (c.height/2)) && mY < (c.yRight - (c.height/2))+c.height)){
+
+                  ctx.strokeStyle = "#FF0000";
+                  ctx.strokeRect(c.xLeft - (c.width/2), c.yLeft - (c.height/2), c.width, c.height);
+                  ctx.strokeRect(c.xRight - (c.width/2), c.yRight - (c.height/2), c.width, c.height);
+                  //_('status').innerHTML = "You touched "+c.id;
+                  coords.splice(i, 1);
+                  if(coords.length == 0){
+                    alert("Congrats, you finished it.");
+                  }
+                }
+              }
+        });
+
+        /*for(var i=0; i<coords.length; i++){
+          var c = coords[i];
+          ctx.fillStyle = "orange";
+          ctx.fillRect(c.xLeft - (c.width/2), c.yLeft - (c.height/2), c.width, c.height);
+          ctx.fillRect(c.xRight - (c.width/2), c.yRight - (c.height/2), c.width, c.height);
+        }*/
+      }
+
+      window.addEventListener('load', function(){
+        initCanvas();
+      });
+    </script>
+  </head>
+  <body>
+    <canvas id="canvas" width="900" height="500"></canvas>
+  </body>
+</html>

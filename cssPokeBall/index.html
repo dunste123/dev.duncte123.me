@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>PokeBall</title>
+        <link href="./pokeball.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+        .container{
+            margin-top: 60px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="pokeball pokeball-animated"></div>
+        </div>
+
+        <script>
+
+            const el = document.querySelector('.pokeball');
+            el.addEventListener('click', () => {
+                
+                el.className = 'pokeball pokeball-animated-blink';
+
+                setTimeout(() => {
+                    el.className = 'pokeball pokeball-animated';
+                }, 3100);
+
+            });
+
+        </script>
+    </body>
+</html>

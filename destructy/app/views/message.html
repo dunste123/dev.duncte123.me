@@ -1,0 +1,17 @@
+{% extends 'templates/layout.html' %}
+
+{% block container %}
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {% if message.message %}
+          <p>{{ message.message }}</p>
+        {% else %}
+          <p>The message has self destructed.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

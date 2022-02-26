@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The best date format ever</title>
+</head>
+<body>
+    <h1><a href="https://twitter.com/mattflor/status/1452364775850225665" target="_blank">The best date format ever</a></h1>
+    <h1 id="time"></h1>
+    <script>
+        const el = document.getElementById('time');
+
+        const format = new Intl.DateTimeFormat('default', {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+            hour12: false,
+        });
+
+        function update() {
+            const parts = format.formatToParts(new Date());
+            const part = (type) => parts.find(x => x.type === type).value;
+
+            el.innerHTML = `${part('hour')}:${part('day')}-${part('second')}:${part('year')}-${part('month')}:${part('minute')}`;
+        }
+
+        update();
+        setInterval(update, 1000);
+    </script>
+</body>
+</html>

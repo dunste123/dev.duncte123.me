@@ -1,0 +1,3 @@
+User-Agent: *
+
+Sitemap: https://dev.duncte123.ml/sitemap.xml
