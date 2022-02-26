@@ -1,12 +1,11 @@
-<?php $dirs = array_filter(glob('*'), 'is_dir'); ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <link href="https://dshelmondgames.ml/faviecon/profileYT.png" rel="icon" type="image/x-icon" />
-    <link href="https://dshelmondgames.ml/faviecon/profileYT.png" rel="shortcut icon" type="image/x-icon" />
-    <link href="https://dshelmondgames.ml/faviecon/profileYT.png" rel="apple-touch-icon" type="image/x-icon" />
-    <meta content="https://dshelmondgames.ml/faviecon/profileYT.png" property="og:image" />
+    <link href="https://duncte123.me/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="https://duncte123.me/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://duncte123.me/favicon.ico" rel="apple-touch-icon" type="image/x-icon" />
+    <meta content="https://duncte123.me/favicon.ico" property="og:image" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scaleble=0" />
     <meta name="category" content="Showcase/Website" />
@@ -19,10 +18,10 @@
     <meta content="Duncte's little showcase" property="og:description" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@duncte123" />
-    <meta name="twitter:title" content="Home | dev.duncte123.ml" />
+    <meta name="twitter:title" content="Home | dev.duncte123.me" />
     <meta name="twitter:description" content="Duncte's little showcase" />
-    <meta name="twitter:image" content="https://dshelmondgames.ml/faviecon/profileYT.png" />
-    <title>Home | dev.duncte123.ml</title>
+    <meta name="twitter:image" content="https://duncte123.me/favicon.ico" />
+    <title>Home | dev.duncte123.me</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
   </head>
   <body>
@@ -33,9 +32,12 @@
       </div>
       <div class="row">
         <h6>Over here you can find a list of the projects on this website.</h6>
-        <?php foreach($dirs as $dir){
-          echo "<p><a href=\"/$dir/\" target=\"_blank\">/$dir/</a></p>";
-        }?>
+        <?php
+            $dirs = array_filter(glob('*'), fn ($item) => is_dir($item));
+            foreach($dirs as $dir) {
+              echo "<p><a href=\"/$dir/\" target=\"_blank\">/$dir/</a></p>";
+            }
+        ?>
       </div>
     </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
