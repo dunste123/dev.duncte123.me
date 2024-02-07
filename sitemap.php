@@ -3,7 +3,7 @@
   error_reporting('NONE');
   // configuration
   $dirs = array_filter(glob('*'), 'is_dir');
-  $url_prefix = 'https://dev.duncte123.ml/';
+  $url_prefix = 'https://dev.duncte123.me/';
   $blog_timezone = 'GMT';
   $timezone_offset = '+01:00';
   $W3C_datetime_format_php = 'Y-m-d h:i:s'; // See http://www.w3.org/TR/NOTE-datetime

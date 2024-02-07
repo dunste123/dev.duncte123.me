@@ -7,30 +7,30 @@
         $calculation = null;
         if (isset($_GET['screen'])) {
           $screen = rawurldecode($_GET['screen']);
+		      $screen = preg_replace('/[^0-9\\/\\*\\-+)(.]+/i', '', $screen);
           $out = null;
           $calculation = $screen.'=';
-          //$out = eval("return $screen;");
-	  $out = 0;
-
+          try {
+		        $out = eval("return $screen;");
+		      } catch (ParseError  $e) {
+		        $out = 'Invalid Math';
+		      }
+	        // $out = 0;
         }
         ?>
 		<div class="screen">
 		    <p class="calculation"><?php echo $calculation; ?></p>
 		  <textarea class="innerScreen" name="screen" id="screen" placeholder="<?php echo $out; ?>" cols="50" rows="1" autocomplete="off" readonly="readonly"></textarea><br />
     </div>
-		<?php
-        for($i=0;$i<10;$i++){
-        ?>
+		<?php for($i=0;$i<10;$i++){ ?>
         <input type="button" class="calc_button" name="number_<?php echo $i; ?>" value="<?php echo $i; ?>" onclick="insert('<?php echo $i; ?>', 'screen');" />
-        <?php
-        }
-        $items = array('.', '*', '/', '+', '-', '(', ')');
-        foreach ($items as $item) {
-        ?>
+      <?php
+      }
+      $items = array('.', '*', '/', '+', '-', '(', ')');
+      foreach ($items as $item) {
+      ?>
         <input type="button" class="calc_button" name="number_<?php echo $item; ?>" value="<?php echo $item; ?>" onclick="insert('<?php echo $item; ?>', 'screen');" />
-        <?php
-        }
-        ?>
+      <?php } ?>
         <br />
         <input type="button" class="calc_button" onclick="cls('screen');" value="cls" />
         <input type="button" class="calc_button" onclick="undo('screen');" value="undo" />
