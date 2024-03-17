@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'windows';
+  src: URL('./segoe_slboot.ttf') format('truetype');
+}
+
+.spinner {
+    font-family: 'windows';
+    font-size: 10em;
+}
